@@ -16,9 +16,15 @@ return new class extends Migration
         Schema::create('masyarakats', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('nik')->unique();
+            $table->string('telp')->unique();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('tmpt_lahir')->nullable();
+            $table->string('username')->unique();
             $table->string('password');
+            $table->string('alamat')->nullable();
+            $table->string('gambar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

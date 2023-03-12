@@ -12,6 +12,9 @@ class Petugas extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "petugas";
+    protected $primaryKey ="id";
+
     /**
      * The attributes that are mass assignable.
      *

@@ -12,6 +12,9 @@ class Masyarakat extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "masyarakats";
+    protected $primaryKey ="id";
+
     /**
      * The attributes that are mass assignable.
      *

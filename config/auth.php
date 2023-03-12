@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Masyarakat;
+
 return [
 
     /*
@@ -20,12 +22,12 @@ return [
 
     'defaults' => [
         'guard' => 'masyarakat',
-        'passwords' => 'masyarakats',
+        'passwords' => 'masyarakats'
     ],
 
     'defaults' => [
         'guard' => 'petugas',
-        'passwords' => 'petugas',
+        'passwords' => 'petugas'
     ],
 
     /*
@@ -51,14 +53,14 @@ return [
             'provider' => 'users',
         ],
 
-        'petugas' => [
-            'driver' => 'session',
-            'provider' => 'petugas',
-        ],
-
         'masyarakat' => [
             'driver' => 'session',
-            'provider' => 'masyarakats',
+            'provider' => 'masyarakats'
+        ],
+
+        'petugas' => [
+            'driver' => 'session',
+            'provider' => 'petugas'
         ],
     ],
 
@@ -85,14 +87,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'petugas' => [
-            'driver' => 'eloquent',
-            'table' => App\Models\Petugas::class,
-        ],
-
         'masyarakats' => [
             'driver' => 'eloquent',
-            'table' => App\Models\Masyarakat::class,
+            'model' => App\Models\Masyarakat::class
+        ],
+
+        'petugas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Petugas::class,
         ],
 
     ],
@@ -119,12 +121,18 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+    ],
+
+    'passwords' => [
         'masyarakats' => [
             'provider' => 'masyarakats',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+    ],
+
+    'passwords' => [
         'petugas' => [
             'provider' => 'petugas',
             'table' => 'password_resets',

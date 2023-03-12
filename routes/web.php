@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Landing Page
 Route::get('/', function () {
-    return view('main.index');
+    return view('main.index', [
+        'title' => 'Halaman Utama'
+    ]);
 });
+
+// Login dan Register (View)
+Route::get('/masuk', [AuthController::class, 'masuk'])->middleware('guest');
+Route::get('/daftar', [AuthController::class, 'daftar'])->middleware('guest');
+
+// Login dan Register (Controller)
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
