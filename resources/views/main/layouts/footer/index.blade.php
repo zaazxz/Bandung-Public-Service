@@ -18,7 +18,7 @@
                                 HALAMAN UTAMA
                             </a>
                         </li>
-                        {{-- @if (Auth::guard('user')->check())
+                        @if (Auth::guard('user')->check())
                             <li class="teks-header-2">
                                 <a href="/laporan" class="text-decoration-none text-white">
                                     PENGADUAN
@@ -36,9 +36,9 @@
                                     PENGADUAN
                                 </a>
                             </li>
-                        @endif --}}
+                        @endif
                         <li class="teks-header-2">
-                            <a href="#" class="text-decoration-none text-white">
+                            <a href="/about" class="text-decoration-none text-white">
                                 TENTANG KAMI
                             </a>
                         </li>

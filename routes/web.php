@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Login dan Register (View)
+Route::get('/masuk', [AuthController::class, 'masuk'])->middleware('non-auth');
+Route::get('/daftar', [AuthController::class, 'daftar'])->middleware('non-auth');
+
+// Login dan Register (Controller)
+Route::post('/login', [AuthController::class, 'login'])->middleware('non-auth');
+Route::post('/register', [AuthController::class, 'register'])->middleware('non-auth');
+Route::post('/logout', [AuthController::class, 'logout']);
+
 // Landing Page
 Route::get('/', function () {
     return view('main.index', [
@@ -21,10 +31,13 @@ Route::get('/', function () {
     ]);
 });
 
-// Login dan Register (View)
-Route::get('/masuk', [AuthController::class, 'masuk'])->middleware('guest');
-Route::get('/daftar', [AuthController::class, 'daftar'])->middleware('guest');
+// About
+Route::get('/about', function () {
+    return view('main.about.about', [
+        'title' => 'Tentang Kami'
+    ]);
+});
 
-// Login dan Register (Controller)
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
+// Laporan
+Route::get('/laporan', [LaporanController::class, 'index']);
+Route::resource('/laporan', LaporanController::class);

@@ -160,55 +160,10 @@
                             <form class="form" action="/laporan" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="status" value="Menunggu">
-                                <input type="hidden" name="user_id" value="{{ Auth::guard('masyarakat')->user()->id }}">
+                                <input type="hidden" name="masyarakat_id" value="{{ Auth::guard('masyarakat')->user()->id }}">
                                 <div class="row">
 
-                                    Identitas Penulis
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group text-white">
-                                            <label class="text-white" for="first-name-column">Identitas Penulis</label>
-                                            <div class="row mt-1 py-1">
-                                                <div class="col-sm-4">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="identitas"
-                                                            id="identitas" value="1">
-                                                        <label class="form-check-label" for="identitas">
-                                                            Tampilkan
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="identitas"
-                                                            id="identitas" value="0" checked>
-                                                        <label class="form-check-label" for="identitas">
-                                                            Sembunyikan
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    Kategori Laporan
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label class="text-white" for="kategori">Kategori Laporan</label>
-                                            <div class="form-group">
-                                                <select class="choices form-select">
-                                                    <option value="square">Square</option>
-                                                    <option value="rectangle">Rectangle</option>
-                                                    <option value="rombo">Rombo</option>
-                                                    <option value="romboid">Romboid</option>
-                                                    <option value="trapeze">Trapeze</option>
-                                                    <option value="traible">Triangle</option>
-                                                    <option value="polygon">Polygon</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    Textarea Deskripsi Laporan
+                                    {{-- Textarea Deskripsi Laporan --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="text-white" for="laporan">Deskripsi Laporan</label>
@@ -216,7 +171,7 @@
                                         </div>
                                     </div>
 
-                                    Pratinjau Gambar
+                                    {{-- Pratinjau Gambar --}}
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="text-white" for="contact-info-vertical">Pratinjau Gambar</label>
@@ -227,13 +182,40 @@
                                         </div>
                                     </div>
 
-                                    Input Gambar
-                                    <div class="col-12">
+                                    {{-- Input Gambar --}}
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="text-white" for="gambar">Gambar</label>
                                             <input class="form-control @error('gambar') is-invalid @enderror"
                                                 type="file" id="gambar" name="gambar" onchange="previewImage()"
                                                 value="{{ old('gambar') }}">
+                                        </div>
+                                    </div>
+
+                                    {{-- Identitas Penulis --}}
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group text-white">
+                                            <label class="text-white" for="first-name-column">Identitas Penulis</label>
+                                            <div class="row mt-1 py-1">
+                                                <div class="col-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="identitas"
+                                                            id="identitas" value="1" checked>
+                                                        <label class="form-check-label" for="identitas">
+                                                            Tampilkan
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="identitas"
+                                                            id="identitas" value="0">
+                                                        <label class="form-check-label" for="identitas">
+                                                            Sembunyikan
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

@@ -60,7 +60,7 @@
                             </div>
                             <hr style="width: 95%;" class="mx-auto">
                         </form>
-                        <small>Tidak memiliki akun? <a href="/register">Daftar</a></small>
+                        <small>Tidak memiliki akun? <a href="/daftar">Daftar</a></small>
                     </div>
                 </div>
             </div>

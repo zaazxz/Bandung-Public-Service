@@ -14,12 +14,12 @@
                     <div class="row">
                         <div class="col-sm-4 my-1">
                             <div class="d-grid gap-2">
-                                <a href="/login" class="btn btn-primary">Masuk</a>
+                                <a href="/masuk" class="btn btn-primary">Masuk</a>
                             </div>
                         </div>
                         <div class="col-sm-4 my-1">
                             <div class="d-grid gap-2">
-                                <a href="/register" class="btn btn-primary">Daftar</a>
+                                <a href="/daftar" class="btn btn-primary">Daftar</a>
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
 
                     {{-- Guest --}}
                     @if (!Auth::guard('user')->check() && !Auth::guard('petugas')->check() && !Auth::guard('masyarakat')->check())
-                        <a href="/login" class="btn btn-primary px-5">Masuk</a>
-                        <a href="/register" class="btn btn-primary px-5">Daftar</a>
+                        <a href="/masuk" class="btn btn-primary px-5">Masuk</a>
+                        <a href="/daftar" class="btn btn-primary px-5">Daftar</a>
                     @endif
 
                     {{-- Admin --}}

@@ -146,7 +146,7 @@
                         </form>
                         <hr style="width: 95%;" class="mx-auto">
                         <div class="text-center mb-2">
-                            <small>Sudah memiliki akun? <a href="/login">Masuk</a></small>
+                            <small>Sudah memiliki akun? <a href="/masuk">Masuk</a></small>
                         </div>
                     </div>
                 </div>
