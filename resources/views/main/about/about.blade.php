@@ -35,7 +35,7 @@
         </div>
         <div class="row">
             <div class="col-lg-4 text-center pt-2 mt-3">
-                <img src="{{ asset('img/test.jpg') }}" alt="" width="100%" class="rounded">
+                <img src="{{ asset('img/foto.jpg') }}" alt="" width="100%" class="rounded">
             </div>
             <div class="col-lg-8 pt-2 mt-3">
                 <div class="card">

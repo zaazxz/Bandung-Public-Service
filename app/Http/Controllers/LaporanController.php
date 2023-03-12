@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanController extends Controller
 {
@@ -24,17 +25,22 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function detail()
+    {
+        return view('main.pengaduan.detail', [
+            'title' => 'Pengaduan',
+            'reports' => Laporan::where('masyarakat_id', Auth::guard('masyarakat')->user()->id)->latest()->paginate(4)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail()
+    public function create()
     {
-        return view('main.pengaduan.index', [
-            'title' => 'Pengaduan',
-            'reports' => Laporan::where('masyarakat_id', Auth::guard('masyarakat')->user()->id)->latest()->paginate(4)
-        ]);
+        //
     }
 
     /**
@@ -77,7 +83,10 @@ class LaporanController extends Controller
      */
     public function show(Laporan $laporan)
     {
-        //
+        return view('main.pengaduan.show', [
+            'title' => 'Pengaduan',
+            'laporan' => $laporan
+        ]);
     }
 
     /**
@@ -100,7 +109,34 @@ class LaporanController extends Controller
      */
     public function update(Request $request, Laporan $laporan)
     {
-        //
+        $rules = [
+            'user_id' => '',
+            'petugas_id' => '',
+            'masyarakat_id' => 'required',
+            'status' => 'required',
+            'identitas' => '',
+            'laporan' => 'required',
+            'gambar' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:20000',
+            'remember_token' => Str::random(10)
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('gambar')) {
+            if($laporan->gambar){
+                Storage::delete($laporan->gambar);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('post-images');
+        }
+
+        Laporan::where('id', $laporan->id)
+            ->update($validatedData);
+
+        if($validatedData) {
+            return redirect('/laporan/detail')->with(['success' => 'Data Berhasil Diubah!']);
+        } else {
+            return redirect('/laporan/detail')->with(['error' => 'Data Gagal Diubah!']);
+        }
     }
 
     /**
@@ -111,6 +147,15 @@ class LaporanController extends Controller
      */
     public function destroy(Laporan $laporan)
     {
-        //
+        if($laporan->gambar){
+            Storage::delete($laporan->gambar);
+        }
+        Laporan::destroy($laporan->id);
+
+        if($laporan) {
+            return redirect('/laporan/detail')->with(['success' => 'Data Berhasil Dihapus!']);
+        } else {
+            return redirect('/laporan/detail')->with(['error' => 'Data Gagal Dihapus!']);
+        }
     }
 }

@@ -127,9 +127,9 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                <li><a class="dropdown-item" href="/profil-masyarakat">Konfigurasi Profil</a></li>
+                                <li><a class="dropdown-item" href="/konfigurasi/masyarakat">Konfigurasi Profil</a></li>
                                 <li>
-                                    <hr class="dropdown-divider" />
+                                    <hr class="dropdown-divider"/>
                                 </li>
                                 <li>
                                     <form action="/logout" method="post">

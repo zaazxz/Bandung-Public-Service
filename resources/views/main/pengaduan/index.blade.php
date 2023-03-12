@@ -65,10 +65,6 @@
                                                 alt="Card image cap" style="height: 20rem" />
                                         @endif
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ $laporan->status }}</h4>
-                                            <p class="card-text">
-                                                {{ $laporan->laporan }}
-                                            </p>
                                             <small class="text-muted">
                                                 @if ($laporan->identitas == 1)
                                                     {{ $laporan->masyarakat->nama }}
@@ -76,16 +72,24 @@
                                                     Anonymous
                                                 @endif
                                             </small>
-                                            <br>
-                                            <small class="text-muted">{{ $laporan->updated_at }}</small>
-                                            <br>
+                                            <p class="card-text mb-5">
+                                                {{ $laporan->laporan }}
+                                            </p>
                                             @if ($laporan->status == 'Menunggu')
-                                                <small class="text-warning">{{ $laporan->status }}</small>
-                                            @elseif ($laporan->status == 'Diproses')
                                                 <small class="text-primary">{{ $laporan->status }}</small>
+                                            @elseif ($laporan->status == 'Diproses')
+                                                <small class="text-warning">{{ $laporan->status }}</small>
                                             @elseif ($laporan->status == 'Selesai')
                                                 <small class="text-success">{{ $laporan->status }}</small>
+                                            @elseif ($laporan->status == 'Ditolak')
+                                                <small class="text-danger">{{ $laporan->status }}</small>
                                             @endif
+                                            <hr>
+                                            <div class="d-grid gap-2">
+                                                <a href="/laporan/{{ $laporan->id }}" class="btn btn-primary">
+                                                    Lihat Laporan
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

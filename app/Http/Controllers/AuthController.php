@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -77,9 +78,9 @@ class AuthController extends Controller
         Masyarakat::create($data);
 
         if ($data) {
-            return redirect('/masuk')->with(['success' => 'User baru berhasil ditambahkan!']);
+            return redirect('/masuk')->with(Alert::success('success', 'Data berhasil ditambahkan!'));
         } else {
-            return redirect('/masuk')->with(['success' => 'User baru berhasil ditambahkan!']);
+            return redirect('/masuk');
         }
     }
 

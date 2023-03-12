@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\MasyarakatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,10 @@ Route::get('/about', function () {
         'title' => 'Tentang Kami'
     ]);
 });
+
+// Konfigurasi (Masyarakat)
+Route::get('konfigurasi/masyarakat', [MasyarakatController::class, 'index']);
+Route::resource('konfigurasi/masyarakat', MasyarakatController::class);
 
 // Laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
