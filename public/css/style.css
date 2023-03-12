@@ -1,0 +1,80 @@
+@font-face {
+    font-family: "poppins-bold";
+    src: url(../font/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: "poppins-regular";
+    src: url(../font/Poppins/Poppins-Regular.ttf);
+}
+
+body {
+overflow-x: hidden;
+}
+
+.header {
+    height: 85vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("../img/header.jpg");
+    background-size: cover;
+}
+
+.bg-navbar {
+    background: black;
+    opacity: 85%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9.6px);
+}
+
+.teks-header {
+    font-family: "poppins-bold";
+}
+
+.teks-header-2 {
+    font-family: "poppins-regular";
+}
+
+/* Step By Step */
+.step {
+    height: fit-content;
+    border: 1px solid black;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("../img/Proses.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.801);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Peengaduan */
+.pengaduan {
+    height: fit-content;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/mentah-bg.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+
+/* Footer */
+.footer {
+    height: fit-content;
+    background-color: black;
+}
+
+.list-footer {
+    list-style-type: none;
+}
+
+.border-down {
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
