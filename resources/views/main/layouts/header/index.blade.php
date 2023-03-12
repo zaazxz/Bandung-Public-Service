@@ -252,7 +252,7 @@
                                 <div class="submenu-group-wrapper">
                                     <ul class="submenu-group">
                                         <li class="submenu-item">
-                                            <a href="layout-default.html" class="submenu-link">Laporan Saya</a>
+                                            <a href="/laporan/detail" class="submenu-link">Laporan Saya</a>
                                         </li>
                                         <li class="submenu-item">
                                             <a href="/laporan" class="submenu-link">Laporan</a>

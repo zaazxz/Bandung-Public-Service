@@ -40,4 +40,5 @@ Route::get('/about', function () {
 
 // Laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
+Route::get('/laporan/detail', [LaporanController::class, 'detail']);
 Route::resource('/laporan', LaporanController::class);

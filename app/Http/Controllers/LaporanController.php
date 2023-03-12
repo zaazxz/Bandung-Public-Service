@@ -7,6 +7,7 @@ use App\Models\Laporan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
@@ -18,7 +19,8 @@ class LaporanController extends Controller
     public function index()
     {
         return view('main.pengaduan.index', [
-            'title' => 'Pengaduan'
+            'title' => 'Pengaduan',
+            'reports' => Laporan::latest()->paginate(4)
         ]);
     }
 
@@ -27,9 +29,12 @@ class LaporanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function detail()
     {
-        //
+        return view('main.pengaduan.index', [
+            'title' => 'Pengaduan',
+            'reports' => Laporan::where('masyarakat_id', Auth::guard('masyarakat')->user()->id)->latest()->paginate(4)
+        ]);
     }
 
     /**
