@@ -14,7 +14,7 @@ class MasyarakatController extends Controller
     {
         return view('main.konfigurasi.masyarakat.masyarakat', [
             'title' => 'Konfigurasi Profil',
-        ]); 
+        ]);
     }
 
     public function edit(Masyarakat $masyarakat)
@@ -22,7 +22,7 @@ class MasyarakatController extends Controller
         return view('main.konfigurasi.masyarakat.edit', [
             'title' => 'Konfigurasi Profil',
             'masyarakat' => $masyarakat
-        ]); 
+        ]);
     }
 
     public function update(Request $request, Masyarakat $masyarakat)

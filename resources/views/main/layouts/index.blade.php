@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/pages/simple-datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}>
 
     <title>BPSE | {{ $title }}</title>
 </head>
@@ -39,10 +37,6 @@
     @include('main.layouts.footer.index')
     {{-- Footer : End --}}
 
-    {{-- Alert Sweetalert2 --}}
-    @include('sweetalert::alert')
-    {{-- End : Alert --}}
-
     {{-- JavaScript --}}
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('assets/js/pages/horizontal-layout.js') }}"></script>
@@ -54,8 +48,6 @@
     <script src="{{ asset('assets/js/pages/simple-datatables.js') }}"></script>
     <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
-    <script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>>
-    <script src="{{ asset('assets/js/pages/sweetalert2.js') }}"></script>>
 
     </body>
 

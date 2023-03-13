@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -49,7 +48,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return back();;
+        return back();
     }
 
     public function register(Request $request) {
@@ -74,11 +73,10 @@ class AuthController extends Controller
         ]);
 
         $data['password'] = Hash::make($data['password']);
-
         Masyarakat::create($data);
 
         if ($data) {
-            return redirect('/masuk')->with(Alert::success('success', 'Data berhasil ditambahkan!'));
+            return redirect('/masuk');
         } else {
             return redirect('/masuk');
         }
@@ -112,7 +110,7 @@ class AuthController extends Controller
         }
 
         // Masyarakat
-        if (Auth::guard('masyarakat')->check()) {
+        elseif (Auth::guard('masyarakat')->check()) {
 
             Auth::guard('masyarakat')->logout();
 

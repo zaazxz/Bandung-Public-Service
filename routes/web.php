@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Laporan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
@@ -28,6 +29,14 @@ Route::post('/logout', [AuthController::class, 'logout']);
 // Landing Page
 Route::get('/', function () {
     return view('main.index', [
+        'title' => 'Halaman Utama',
+        'data' => Laporan::all()
+    ]);
+});
+
+// Landing Page
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
         'title' => 'Halaman Utama'
     ]);
 });

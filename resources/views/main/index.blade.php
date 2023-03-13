@@ -135,13 +135,13 @@
         <h1 class="teks-header text-center">
             JUMLAH PENGADUAN SAAT INI <br>
         </h1>
-        <div class="text-center teks-header" style="font-size: 100px;">0</div>
+        <div class="text-center teks-header" style="font-size: 100px;">{{ $data->count() }}</div>
         <h2 class="teks-header text-center">AYO BANGUN BANDUNG BERSAMA!</h2>
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 mx-auto">
                     <div class="d-grid gap-2">
-                        <a href="/login" class="btn btn-primary">Buat Laporan</a>
+                        <a href="/masuk" class="btn btn-primary">Buat Laporan</a>
                     </div>
                 </div>
             </div>
