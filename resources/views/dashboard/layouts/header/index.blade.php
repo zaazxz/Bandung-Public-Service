@@ -1,4 +1,4 @@
-<header class='mb-3'>
+<header>
     <nav class="navbar navbar-expand navbar-light navbar-top">
         <div class="container-fluid">
             <a href="#" class="burger-btn d-block">
@@ -35,13 +35,14 @@
                         <li>
                             <a class="dropdown-item" href="#">
                                 <i class="icon-mid bi bi-person me-2"></i>
-                                Konnfigurasi Profil
+                                Konfigurasi Profil
                             </a>
                         </li>
                         <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">
-                            <i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="icon-mid bi bi-box-arrow-left me-2"></i>
                                 Logout
                             </a>
                         </li>

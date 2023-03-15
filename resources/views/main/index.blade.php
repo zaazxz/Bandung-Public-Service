@@ -161,7 +161,7 @@
                                 @csrf
                                 <input type="hidden" name="status" value="Menunggu">
                                 <input type="hidden" name="masyarakat_id" value="{{ Auth::guard('masyarakat')->user()->id }}">
-                                <div class="row">
+                                <div class="row">l
 
                                     {{-- Textarea Deskripsi Laporan --}}
                                     <div class="col-md-12">

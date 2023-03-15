@@ -3,6 +3,7 @@
 use App\Models\Laporan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MasyarakatController;
 
@@ -34,23 +35,22 @@ Route::get('/', function () {
     ]);
 });
 
-// Landing Page
-Route::get('/dashboard', function () {
-    return view('dashboard.index', [
-        'title' => 'Halaman Utama'
-    ]);
-});
+// Only view
+Route::get('/dashboard', [ViewController::class, 'dashboard']);
 
-// About
 Route::get('/about', function () {
     return view('main.about.about', [
         'title' => 'Tentang Kami'
     ]);
 });
 
-// Konfigurasi (Masyarakat)
-Route::get('konfigurasi/masyarakat', [MasyarakatController::class, 'index']);
-Route::resource('konfigurasi/masyarakat', MasyarakatController::class);
+Route::group(['middleware' => ['auth:masyarakat']], function () {
+
+    // Konfigurasi (Masyarakat)
+    Route::get('konfigurasi/masyarakat', [MasyarakatController::class, 'index']);
+    Route::resource('konfigurasi/masyarakat', MasyarakatController::class);
+
+});
 
 // Laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
