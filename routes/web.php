@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth:user,petugas']], function () {
     Route::get('/dashboard', [ViewController::class, 'dashboard']);
 
     // Pengaduan
+    Route::get('/dashboard/pengaduan', [ViewController::class, 'pengaduanBaru']);
+    Route::get('/dashboard/pengaduan/diproses', [ViewController::class, 'pengaduanDiproses']);
+    Route::get('/dashboard/pengaduan/selesai', [ViewController::class, 'pengaduanSelesai']);
+    Route::get('/dashboard/pengaduan/{laporan}', [ViewController::class, 'pengaduanDetail']);
 
 });
 
@@ -53,8 +57,8 @@ Route::group(['middleware' => ['auth:user']], function () {
     Route::post('/dashboard/petugas', [PetugasController::class, 'store']);
 
     // Konfigurasi Admin
-    Route::get('dashboard/konfigurasi/user', [UserController::class, 'index']);
-    Route::get('dashboard/konfigurasi/user', [UserController::class, 'edit']);
+    Route::get('/dashboard/konfigurasi/user', [UserController::class, 'index']);
+    Route::post('/dashboard/konfigurasi/user/{user}', [UserController::class, 'update']);
 
 });
 

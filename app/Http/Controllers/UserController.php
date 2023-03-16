@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -61,7 +63,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+
     }
 
     /**
@@ -73,7 +75,36 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // dd($request->all());
+        $rules = [
+            'nama' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => '',
+            'telp' => 'required',
+            'alamat' => 'required',
+            'gambar' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:20000',
+            'remember_token' => Str::random(10)
+        ]; 
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('gambar')) {
+            if($user->gambar){
+                Storage::delete($user->gambar);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('post-images');
+        }
+
+        User::where('id', $user->id)
+            ->update($validatedData);
+
+
+        if($validatedData) {
+            return redirect('dashboard/konfigurasi/user')->with(['success' => 'Data Berhasil Diubah!']);
+        } else {
+            return redirect('dashboard/konfigurasi/user')->with(['error' => 'Data Gagal Diubah!']);
+        } 
     }
 
     /**

@@ -165,23 +165,11 @@
                                 <span>Tentang Kami</span>
                             </a>
                         </li>
-                        <li class="menu-item active has-sub">
+                        <li class="menu-item">
                             <a href="/laporan" class="menu-link">
                                 <i class="fa-solid fa-file-pen"></i>
                                 <span>Laporan</span>
                             </a>
-                            <div class="submenu">
-                                <div class="submenu-group-wrapper">
-                                    <ul class="submenu-group">
-                                        <li class="submenu-item">
-                                            <a href="layout-default.html" class="submenu-link">Laporan Saya</a>
-                                        </li>
-                                        <li class="submenu-item">
-                                            <a href="/laporan" class="submenu-link">Laporan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </div>
@@ -204,23 +192,11 @@
                                 <span>Tentang Kami</span>
                             </a>
                         </li>
-                        <li class="menu-item active has-sub">
+                        <li class="menu-item">
                             <a href="/laporan" class="menu-link">
                                 <i class="fa-solid fa-file-pen"></i>
                                 <span>Laporan</span>
                             </a>
-                            <div class="submenu">
-                                <div class="submenu-group-wrapper">
-                                    <ul class="submenu-group">
-                                        <li class="submenu-item">
-                                            <a href="layout-default.html" class="submenu-link">Laporan Saya</a>
-                                        </li>
-                                        <li class="submenu-item">
-                                            <a href="/laporan" class="submenu-link">Laporan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </div>

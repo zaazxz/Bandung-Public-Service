@@ -87,15 +87,31 @@
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>
-                        <th>pengaduan</th>
-                        <th>penulis</th>
+                        <th>No</th>
+                        <th>Judul Pengaduan</th>
+                        <th>Status</th>
+                        <th>Penulis</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pengaduans as $pengaduan)
                         <tr>
-                            <td>{{ $pengaduan->laporan }}</td>
-                            <td>{{ $pengaduan->masyarakat->nama }}</td>
+                            <td>{{ $loop->iteration }}
+                            <td>{{ $pengaduan->judul }}</td>
+                            @if ($pengaduan->status == 'Menunggu')
+                                <td class="text-primary">{{ $pengaduan->status }}</td> 
+                            @elseif ($pengaduan->status == 'Diproses')
+                                <td class="text-warning">{{ $pengaduan->status }}</td>
+                            @elseif ($pengaduan->status == 'Selesai')
+                                <td class="text-success">{{ $pengaduan->status }}</td>
+                            @else
+                                <td class="text-danger">{{ $pengaduan->status }}</td>
+                            @endif
+                            @if ($pengaduan->identitas == 0)
+                                <td>Anonymous</td>
+                            @else
+                                <td>{{$pengaduan->masyarakat->nama}}</td> 
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
@@ -109,13 +125,13 @@
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
                         <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                            <div class="stats-icon purple mb-2">
-                                <i class="iconly-boldShow"></i>
+                            <div class="stats-icon blue mb-2">
+                               <i class="fa-solid fa-user"></i>
                             </div>
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                            <h6 class="text-muted font-semibold">Profile Views</h6>
-                            <h6 class="font-extrabold mb-0">112.000</h6>
+                            <h6 class="text-muted font-semibold">Masyarakat</h6>
+                            <h6 class="font-extrabold mb-0">{{ $masyarakats->count() }}</h6>
                         </div>
                     </div>
                 </div>
@@ -126,13 +142,13 @@
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
                         <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                            <div class="stats-icon purple mb-2">
-                                <i class="iconly-boldShow"></i>
+                            <div class="stats-icon blue mb-2">
+                                <i class="fa-solid fa-user-tie"></i>
                             </div>
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                            <h6 class="text-muted font-semibold">Profile Views</h6>
-                            <h6 class="font-extrabold mb-0">112.000</h6>
+                            <h6 class="text-muted font-semibold">Petugas</h6>
+                            <h6 class="font-extrabold mb-0">{{ $petugass->count() }}</h6>
                         </div>
                     </div>
                 </div>

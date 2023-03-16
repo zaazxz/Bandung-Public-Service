@@ -65,19 +65,21 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="/dashboard/masyarakat" class='sidebar-link'>
-                        <i class="fa-solid fa-user"></i>
-                        <span>Masyarakat</span>
-                    </a>
-                </li>
+                @if (Auth::guard('user')->check())
+                    <li class="sidebar-item">
+                        <a href="/dashboard/masyarakat" class='sidebar-link'>
+                            <i class="fa-solid fa-user"></i>
+                            <span>Masyarakat</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-item">
-                    <a href="/dashboard/petugas" class='sidebar-link'>
-                        <i class="fa-solid fa-user-tie"></i>
-                        <span>Petugas</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item">
+                        <a href="/dashboard/petugas" class='sidebar-link'>
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Petugas</span>
+                        </a>
+                    </li>
+                @endif
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -86,13 +88,13 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="layout-default.html">Baru Dibuat</a>
+                            <a href="/dashboard/pengaduan">Baru Dibuat</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="layout-vertical-1-column.html">Dalam Proses</a>
+                            <a href="/dashboard/pengaduan/diproses">Dalam Proses</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="layout-vertical-1-column.html">Selesai</a>
+                            <a href="/dashboard/pengaduan/selesai">Selesai</a>
                         </li>
                     </ul>
                 </li>

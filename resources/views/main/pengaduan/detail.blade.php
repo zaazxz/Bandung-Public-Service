@@ -32,21 +32,7 @@
     </div>
 
     <div class="container my-5">
-        <hr>
         <div class="row">
-            <div class="col-lg-12">
-                <form action="">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Recipient's username"
-                                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <hr>
             <div class="col-lg-12 mt-3">
                 <div class="row">
@@ -69,7 +55,8 @@
                                             <p class="card-text">
                                                 {{ $laporan->laporan }}
                                             </p>
-                                            <div class="row">
+                                            @if ($laporan->status == 'Menunggu')
+                                                <div class="row">
                                                 <div class="col-4">
                                                     <div class="d-grid gap-2">
                                                         <button type="button" class="btn btn-primary"
@@ -102,6 +89,33 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @else
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="d-grid gap-2">
+                                                        <a href="/laporan/{{ $laporan->id }}" class="btn btn-success">
+                                                            Lihat Laporan
+                                                        </a>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="d-grid gap-2">
+                                                        <form action="/laporan/{{ $laporan->id }}" method="post"
+                                                            enctype="multipart/form-data">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <div class="d-grid gap-2">
+                                                                <button onclick="return confirm('Kamu Yakin?')"
+                                                                    class="btn btn-danger">
+                                                                    Hapus
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                 </div>

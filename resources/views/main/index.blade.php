@@ -1,6 +1,7 @@
 @extends('main.layouts.index')
 
-{{-- Header Title Banner --}}
+@section('content')
+    {{-- Header Title Banner --}}
 @section('header-title')
     Selamat Datang!
 @endsection
@@ -161,7 +162,21 @@
                                 @csrf
                                 <input type="hidden" name="status" value="Menunggu">
                                 <input type="hidden" name="masyarakat_id" value="{{ Auth::guard('masyarakat')->user()->id }}">
-                                <div class="row">l
+                                <div class="row">
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                                    <label for="judul" class="text-white">Judul</label>
+                                                    <input type="text" id="judul"
+                                                        class="form-control @error('judul') is-invalid @enderror"
+                                                        placeholder="Masukkan judul Lengkap" name="judul"
+                                                        value="{{ old('judul') }}"
+                                                        required>
+                                                    @error('judul')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
+                                    </div>
 
                                     {{-- Textarea Deskripsi Laporan --}}
                                     <div class="col-md-12">
@@ -176,7 +191,7 @@
                                         <div class="form-group">
                                             <label class="text-white" for="contact-info-vertical">Pratinjau Gambar</label>
                                             <div class="container border mt-2 py-3 d-flex justify-content-center">
-                                                <img id="imgPreview" src="#" alt="your image"
+                                                <img id="imgPreview" src="{{asset('img/1200x720.png')}}" alt="your image"
                                                     style="max-width: 400px;" />
                                             </div>
                                         </div>
@@ -231,8 +246,26 @@
 
         {{-- Petugas --}}
         @elseif (Auth::guard('petugas')->check())
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mx-auto">
+                    <div class="d-grid gap-2">
+                        <a href="/dashboard" class="btn btn-primary">Pergi Ke Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{-- Admin --}}
         @elseif (Auth::guard('user')->check())
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mx-auto">
+                    <div class="d-grid gap-2">
+                        <a href="/dashboard" class="btn btn-primary">Pergi Ke Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         @endif
 
     </div>

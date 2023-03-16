@@ -32,21 +32,7 @@
     </div>
 
     <div class="container my-5">
-        <hr>
         <div class="row">
-            <div class="col-lg-12">
-                <form action="">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Recipient's username"
-                                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <hr>
             <div class="col-lg-12 mt-3">
                 <div class="row">
@@ -72,8 +58,8 @@
                                                     Anonymous
                                                 @endif
                                             </small>
-                                            <p class="card-text mb-5">
-                                                {{ $laporan->laporan }}
+                                            <p class="card-text">
+                                                {{ $laporan->judul }}
                                             </p>
                                             @if ($laporan->status == 'Menunggu')
                                                 <small class="text-primary">{{ $laporan->status }}</small>

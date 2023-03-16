@@ -58,6 +58,7 @@ class LaporanController extends Controller
             'masyarakat_id' => 'required',
             'status' => 'required',
             'identitas' => '',
+            'judul' => 'required',
             'laporan' => 'required',
             'gambar' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:20000',
             'remember_token' => Str::random(10)
@@ -113,11 +114,14 @@ class LaporanController extends Controller
         $rules = [
             'user_id' => '',
             'petugas_id' => '',
-            'masyarakat_id' => 'required',
-            'status' => 'required',
+            'masyarakat_id' => '',
+            'status' => '',
             'identitas' => '',
-            'laporan' => 'required',
+            'judul' => '',
+            'laporan' => '',
             'gambar' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:20000',
+            'gambar_tanggapan' => '',
+            'tanggapan' => '',
             'remember_token' => Str::random(10)
         ];
 
@@ -130,14 +134,71 @@ class LaporanController extends Controller
             $validatedData['gambar'] = $request->file('gambar')->store('post-images');
         }
 
+        if ($request->file('gambar_tanggapan')) {
+            if($laporan->gambar_tanggapan){
+                Storage::delete($laporan->gambar_tanggapan);
+            }
+            $validatedData['gambar_tanggapan'] = $request->file('gambar_tanggapan')->store('post-images');
+        }
+
         Laporan::where('id', $laporan->id)
             ->update($validatedData);
 
-        if($validatedData) {
-            return redirect('/laporan/detail')->with(['success' => 'Data Berhasil Diubah!']);
-        } else {
-            return redirect('/laporan/detail')->with(['error' => 'Data Gagal Diubah!']);
+        if (Auth::guard('user')->check())
+            if ($laporan->status == "Diproses") {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan/diproses')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan/diproses')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            } 
+            elseif ($laporan->status == "Selesai" || $laporan->status == "Ditolak") {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan/selesai')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan/selesai')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            }
+            else {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            }
+
+        elseif (Auth::guard('masyarakat')->check()) {
+            if($validatedData) {
+                return redirect('/laporan')->with(['success' => 'Data Berhasil Diubah!']);
+            } else {
+                return redirect('/laporan')->with(['error' => 'Data Gagal Diubah!']);
+            }
+        } 
+
+        else {
+            if ($laporan->status == "Diproses") {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan/diproses')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan/diproses')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            } 
+            elseif ($laporan->status == "Selesai" || $laporan->status == "Ditolak") {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan/selesai')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan/selesai')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            }
+            else {
+                if($validatedData) {
+                    return redirect('/dashboard/pengaduan')->with(['success' => 'Data Berhasil Diubah!']);
+                } else {
+                    return redirect('/dashboard/pengaduan')->with(['error' => 'Data Gagal Diubah!']);
+                }
+            }
         }
+        
     }
 
     /**

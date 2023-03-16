@@ -83,7 +83,7 @@
                                 <form action="/dashboard/konfigurasi/user/{{ Auth::guard('user')->user()->id }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    @method('put')
+                                    
 
                                     <div class="row">
 

@@ -19,10 +19,11 @@ return new class extends Migration
             $table->foreignId('petugas_id')->nullable();
             $table->foreignId('masyarakat_id');
             $table->string('status');
+            $table->string('judul');
             $table->boolean('identitas');
             $table->longText('laporan');
             $table->string('gambar');
-            $table->string('gambar-tanggapan')->nullable();
+            $table->string('gambar_tanggapan')->nullable();
             $table->string('tanggapan')->nullable();
             $table->timestamps();
         });

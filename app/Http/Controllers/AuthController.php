@@ -38,14 +38,14 @@ class AuthController extends Controller
         elseif (Auth::guard('petugas')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         // Masyarakat
         elseif (Auth::guard('masyarakat')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
         return back();
