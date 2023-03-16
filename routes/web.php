@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth:user']], function () {
 
     // Konfigurasi Admin
     Route::get('dashboard/konfigurasi/user', [UserController::class, 'index']);
+    Route::get('dashboard/konfigurasi/user', [UserController::class, 'edit']);
 
 });
 

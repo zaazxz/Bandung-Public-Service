@@ -37,7 +37,7 @@
                             <div class="form-floating mb-3">
                                 <input
                                 type="text"
-                                class="form-control"
+                                class="form-control @error('username') is-invalid @enderror"
                                 id="username"
                                 placeholder="Masukkan Username"
                                 name="username">
@@ -48,7 +48,7 @@
                                 type="password"
                                 class="form-control"
                                 id="password"
-                                placeholder="Masukkan Password"
+                                placeholder="Masukkan Password @error('password') is-invalid @enderror"
                                 name="password">
                                 <label for="password">Masukkan Password</label>
                             </div>

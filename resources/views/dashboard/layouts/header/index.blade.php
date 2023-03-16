@@ -70,10 +70,10 @@
                         <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="icon-mid bi bi-box-arrow-left me-2"></i>
-                                Logout
-                            </a>
+                            <form action="/logout" method="post" class="text-center">
+                                @csrf
+                                <button type="submit" class="btn btn-danger" ><i class="icon-mid bi bi-box-arrow-left me-2"></i>Logout</button>
+                            </form>
                         </li>
                     </ul>
                 </div>

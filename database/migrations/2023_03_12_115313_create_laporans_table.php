@@ -22,8 +22,8 @@ return new class extends Migration
             $table->boolean('identitas');
             $table->longText('laporan');
             $table->string('gambar');
-            $table->string('gambar-tanggapan');
-            $table->string('tanggapan');
+            $table->string('gambar-tanggapan')->nullable();
+            $table->string('tanggapan')->nullable();
             $table->timestamps();
         });
     }
