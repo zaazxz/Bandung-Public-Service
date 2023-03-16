@@ -15,4 +15,13 @@ class Laporan extends Model
     public function masyarakat() {
         return $this->belongsTo(Masyarakat::class);
     }
+
+    public function petugas() {
+        return $this->belongsTo(Petugas::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -63,4 +63,20 @@ class MasyarakatController extends Controller
             return redirect('/konfigurasi/masyarakat');
         }
     }
+
+    public function delete(Masyarakat $masyarakat)
+    {
+        if($masyarakat->gambar){
+            Storage::delete($masyarakat->gambar);
+        }
+
+        Masyarakat::destroy($masyarakat->id);
+
+        if($masyarakat) {
+            return redirect('/dashboard/masyarakat')->with(['success' => 'Data Berhasil Dihapus!']);
+        } else {
+            return redirect('/dashboard/masyarakat')->with(['error' => 'Data Gagal Dihapus!']);
+        }
+    }
+
 }

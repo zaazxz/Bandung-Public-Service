@@ -3,8 +3,10 @@
 use App\Models\Laporan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\MasyarakatController;
 
 /*
@@ -27,32 +29,47 @@ Route::post('/login', [AuthController::class, 'login'])->middleware('non-auth');
 Route::post('/register', [AuthController::class, 'register'])->middleware('non-auth');
 Route::post('/logout', [AuthController::class, 'logout']);
 
-// Landing Page
-Route::get('/', function () {
-    return view('main.index', [
-        'title' => 'Halaman Utama',
-        'data' => Laporan::all()
-    ]);
+// Admin & Petugas
+Route::group(['middleware' => ['auth:user,petugas']], function () {
+
+    // Dashboard
+    Route::get('/dashboard', [ViewController::class, 'dashboard']);
+
+    // Pengaduan
+
 });
 
-// Only view
-Route::get('/dashboard', [ViewController::class, 'dashboard']);
+// Admin Only
+Route::group(['middleware' => ['auth:user']], function () {
 
-Route::get('/about', function () {
-    return view('main.about.about', [
-        'title' => 'Tentang Kami'
-    ]);
+    // Pengelolaan Masyarakat
+    Route::get('/dashboard/masyarakat', [ViewController::class, 'masyarakat']);
+    Route::post('/dashboard/masyarakat/{masyarakat}', [MasyarakatController::class, 'delete']);
+
+    // Pengelolaan Petugas
+    Route::get('/dashboard/petugas', [PetugasController::class, 'index']);
+    Route::get('/dashboard/petugas/create', [PetugasController::class, 'create']);
+    Route::post('/dashboard/petugas/{petugas}', [PetugasController::class, 'destroy']);
+    Route::post('/dashboard/petugas', [PetugasController::class, 'store']);
+
+    // Konfigurasi Admin
+    Route::get('dashboard/konfigurasi/user', [UserController::class, 'index']);
+
 });
 
+// Masyarakat Only
 Route::group(['middleware' => ['auth:masyarakat']], function () {
 
     // Konfigurasi (Masyarakat)
     Route::get('konfigurasi/masyarakat', [MasyarakatController::class, 'index']);
     Route::resource('konfigurasi/masyarakat', MasyarakatController::class);
-
 });
 
 // Laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
 Route::get('/laporan/detail', [LaporanController::class, 'detail']);
 Route::resource('/laporan', LaporanController::class);
+
+// Without Login
+Route::get('/', [ViewController::class, 'landing']);
+Route::get('/about', [ViewController::class, 'about']);

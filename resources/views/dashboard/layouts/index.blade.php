@@ -10,8 +10,8 @@
     <link rel="shortcut icon" href="{{ asset('img/jadi-biru.png') }}" type="image/x-icon">
 
     {{-- Offline  Stylesheet --}}
-    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
@@ -41,9 +41,9 @@
                         <div class="page-title">
                             <div class="row">
                                 <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h3 class="mb-0">Nama Halaman</h3>
+                                    <h3 class="mb-0">{{ $title }}</h3>
                                     <p class="text-subtitle text-muted mb-0">
-                                        Detail Halaman
+                                        {{ $sub }}
                                     </p>
                                 </div>
                             </div>
@@ -80,6 +80,8 @@
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
     <script src="{{ asset('assets/js/pages/simple-datatables.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('jquery/jquery-3.6.3.js') }}"></script>
 
 </body>
 

@@ -31,7 +31,7 @@ class AuthController extends Controller
         if (Auth::guard('user')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         // Petugas
@@ -45,7 +45,7 @@ class AuthController extends Controller
         elseif (Auth::guard('masyarakat')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         return back();
@@ -55,12 +55,12 @@ class AuthController extends Controller
 
         $data = $request->validate([
             'nama' => 'required',
-            'email' => 'required|unique:masyarakats',
+            'email' => 'required|unique:masyarakats|unique:petugas',
             'nik' => 'required|min:16',
             'telp' => 'required|min:11',
             'tgl_lahir' => '',
             'tmpt_lahir' => '',
-            'username' => 'required|unique:masyarakats',
+            'username' => 'required|unique:masyarakats|unique:petugas',
             'password' => 'required',
             'province' => '',
             'regency' => '',

@@ -66,14 +66,14 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="/dashboard/masyarakat" class='sidebar-link'>
                         <i class="fa-solid fa-user"></i>
                         <span>Masyarakat</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="/dashboard/petugas" class='sidebar-link'>
                         <i class="fa-solid fa-user-tie"></i>
                         <span>Petugas</span>
                     </a>
