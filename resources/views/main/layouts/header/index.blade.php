@@ -75,6 +75,8 @@
                             <i class="bi bi-justify fs-3"></i>
                         </a>
 
+
+
                         {{-- Petugas --}}
                     @elseif (Auth::guard('petugas')->check())
                         <div class="dropdown">
@@ -236,6 +238,32 @@
                                     </ul>
                                 </div>
                             </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            @else
+            <nav class="main-navbar" style="background-color: rgba(0,0,0,0.9)">
+                <div class="container">
+                    <ul>
+                        <li class="menu-item">
+                            <a href="/" class="menu-link">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Halaman Utama</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/about" class="menu-link">
+                                <i class="fa-solid fa-users"></i>
+                                <span>Tentang Kami</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/laporan" class="menu-link">
+                                <i class="fa-solid fa-file-pen"></i>
+                                <span>Laporan</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

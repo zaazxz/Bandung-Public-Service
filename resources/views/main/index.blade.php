@@ -101,7 +101,7 @@
                             <h3 class="text-center teks-header">Proses Pengerjaan</h3>
                             <p class="card-text teks-header-2">
                                 Laporan akan divalidasi dan diverifikasi. jika dirasa laporan sudah terbukti kebenarannya,
-                                laporan akan ditangani dalam jangka waktu 3-10 hari waktu pengerjaan
+                                laporan akan ditangani dalam jangka waktu 2-7 hari waktu pengerjaan
                             </p>
                         </div>
                     </div>

@@ -1,12 +1,15 @@
 <?php
 
 use App\Models\Laporan;
+use App\Models\Masyarakat;
+use App\Models\Petugas;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\MasyarakatController;
 
 /*
@@ -19,6 +22,7 @@ use App\Http\Controllers\MasyarakatController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 // Login dan Register (View)
 Route::get('/masuk', [AuthController::class, 'masuk'])->middleware('non-auth');
@@ -40,6 +44,10 @@ Route::group(['middleware' => ['auth:user,petugas']], function () {
     Route::get('/dashboard/pengaduan/diproses', [ViewController::class, 'pengaduanDiproses']);
     Route::get('/dashboard/pengaduan/selesai', [ViewController::class, 'pengaduanSelesai']);
     Route::get('/dashboard/pengaduan/{laporan}', [ViewController::class, 'pengaduanDetail']);
+
+    // Cetak Laporan
+    Route::get('/cetak', [CetakController::class, 'cetakPDF']);
+    Route::get('/cetakPertanggal/{tglAwal}/{tglAkhir}', [CetakController::class, 'cetakPertanggal']);
 
 });
 

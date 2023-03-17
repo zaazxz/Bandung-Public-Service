@@ -44,7 +44,8 @@
                 </div>
 
                 <div class="sidebar-toggler  x">
-                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle" style="font-size: 35px"></i></a>
+                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"
+                            style="font-size: 35px"></i></a>
                 </div>
             </div>
         </div>
@@ -105,14 +106,23 @@
                 <hr>
 
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link btn btn-outline-light'>
+                    <a href="/cetak" class='sidebar-link btn btn-outline-light' target="_blank">
                         <i class="fa-solid fa-file-pen"></i>
                         <span>Buat Laporan</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class='sidebar-link btn btn-outline-light'>
+                    <button type="button" class="sidebar-link btn btn-outline-light" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-file-pen"></i>
+                        <span>Laporan Pertanggal</span>
+                    </button>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="logout" class='sidebar-link btn btn-outline-light'>
+                        @csrf
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Keluar</span>
                     </a>

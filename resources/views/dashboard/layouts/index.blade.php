@@ -71,6 +71,49 @@
                 </footer>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="nama">Tanggal Awal</label>
+                            <input type="date" id="tglAwal" placeholder="Nama Lengkap" name="tglAwal"
+                                class="form-control @error('nama') is-invalid @enderror" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="nama">Tanggal Akhir</label>
+                            <input type="date" id="tglAkhir" placeholder="Nama Lengkap" name="tglAkhir"
+                                class="form-control @error('nama') is-invalid @enderror" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-grid gap-2">
+                                <a href="" onclick="this.href='/cetakPertanggal/'+document.getElementById('tglAwal').value + '/' + document.getElementById('tglAkhir').value " type="submit" class="btn btn-primary" target="_blank">Save changes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 
     {{-- Offline Javascript --}}
